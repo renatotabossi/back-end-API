@@ -2,7 +2,7 @@ GET http://localhost:3000/universities
 
 ###
 
-GET http://localhost:3000/universities/10
+GET http://localhost:3000/universities/622a73770389b59ed3f9459a
 
 ###
 
@@ -16,4 +16,18 @@ Content-Type: application/json
         "country": "Brasil",
         "domains": "puc.br",
         "state_province": "RJ"
+}
+
+###
+
+
+DELETE http://localhost:3000/universities/622a73770389b59ed3f9459a
+
+###
+
+PATCH  http://localhost:3000/universities/622a740bf6865bb719a4d5a5
+Content-Type: application/json
+
+{
+    "name": "UFRJ"
 }
