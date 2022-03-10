@@ -3,3 +3,17 @@ GET http://localhost:3000/universities
 ###
 
 GET http://localhost:3000/universities/10
+
+###
+
+POST http://localhost:3000/universities
+Content-Type: application/json
+
+{
+    "alpha_two_code": "BR",
+        "web_pages": "www.pucrio.br",
+        "name": "PUC-RIO",
+        "country": "Brasil",
+        "domains": "puc.br",
+        "state_province": "RJ"
+}
