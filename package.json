@@ -2,17 +2,20 @@
   "name": "back-end-integrado",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "seed": "node db/seeds.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cross-fetch": "^3.1.5",
     "express": "^4.17.3",
     "mongodb": "^4.4.1",
-    "mongoose": "^6.2.5"
+    "mongoose": "^6.2.5",
+    "node-fetch": "^3.2.2"
   },
   "devDependencies": {
     "dotenv": "^16.0.0",

@@ -21,7 +21,7 @@ Content-Type: application/json
 ###
 
 
-DELETE http://localhost:3000/universities/622a73770389b59ed3f9459a
+DELETE http://localhost:3000/universities/622a740bf6865bb719a4d5a5
 
 ###
 
