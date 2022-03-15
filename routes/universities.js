@@ -2,11 +2,32 @@ const express = require("express");
 const router = express.Router();
 const University = require("../models/university");
 
-// Get todas as Uni
 router.get("/", async (req, res) => {
+    const { country } = req.query;
+    let { pageSize, pageIndex } = req.query;
+    if (pageSize > 20 || !pageSize) pageSize = 20;
+    if (!pageIndex) pageIndex = 1;
+
+    let universities = [];
     try {
-        const universities = await University.find();
-        res.json(universities);
+        if (country) {
+            let capitalizedCountry =
+                country.charAt(0).toUpperCase() + country.slice(1);
+            universities = await University.find({
+                country: capitalizedCountry,
+            })
+                .limit(pageSize)
+                .skip((pageIndex - 1) * pageSize)
+                .sort()
+                .exec();
+        } else {
+            universities = await University.find()
+                .limit(pageSize)
+                .skip((pageIndex - 1) * pageSize)
+                .sort()
+                .exec();
+        }
+        return res.status(200).json(universities);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -16,9 +37,12 @@ router.get("/", async (req, res) => {
 router.get("/:id", getUniversity, (req, res) => {
     res.send({
         ID: res.university.id,
-        NAME: res.university.name,
-        COUNTRY: res.university.country,
-        STATE_PROVINCE: res.university.state_province,
+        alpha_two_code: res.university.alpha_two_code,
+        web_pages: res.university.web_pages,
+        name: res.university.name,
+        country: res.university.country,
+        domains: res.university.domains,
+        state_province: res.university.state_province,
     });
 });
 
@@ -34,6 +58,17 @@ router.post("/", async (req, res) => {
     });
 
     try {
+        let foundUniversity = await University.find({
+            state_province: university.state_province,
+            country: university.country,
+            name: university.name,
+        }).exec();
+
+        if (foundUniversity.length > 0) {
+            return res
+                .status(409)
+                .json({ message: "University already on DB" });
+        }
         const newUniversity = await university.save();
         res.status(201).json(newUniversity);
     } catch (err) {

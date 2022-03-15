@@ -5,7 +5,7 @@ const universitySchema = new mongoose.Schema({
         type: String,
     },
     web_pages: {
-        type: String,
+        type: Array,
     },
     name: {
         type: String,
@@ -14,7 +14,7 @@ const universitySchema = new mongoose.Schema({
         type: String,
     },
     domains: {
-        type: String,
+        type: Array,
     },
     state_province: {
         type: String,

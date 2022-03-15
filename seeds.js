@@ -1,51 +1,63 @@
 require("dotenv").config();
 const fetch = require("cross-fetch");
+const { json } = require("express/lib/response");
 const mongoose = require("mongoose");
 const University = require("./models/university");
 
 mongoose
-    .connect("mongodb://localhost:3000/universities")
-    .then(() => {
-        console.log("Connection open on seed.js");
+    .connect("mongodb://localhost:27017/universities")
+    .then(async () => {
+        console.log("Connection open on seed2.js");
+        await populateDB();
     })
     .catch((err) => {
         console.log({ message: err.message });
     });
 
-const urlARG = ["http://universities.hipolabs.com/search?country=argentina"];
+async function populateDB() {
+    const url = "http://universities.hipolabs.com/search?country=";
 
-urlARG.map(async (url) => {
-    try {
-        const response = await fetch(url);
-        const json = await response.json();
-        resultData = [...json];
-        for (let i = 0; i < resultData.length; i++) {
-            let university = new University({
-                alpha_two_code: resultData[i].alpha_two_code,
-                web_pages: resultData[i].web_pages,
-                name: resultData[i].name,
-                country: resultData[i].country,
-                domains: resultData[i].domains,
-                nastate_province: resultData[i].state_province,
-            });
-            university.save(() => {
-                console.log("saved" + university);
-                let saveCounter = 0;
-                saveCounter++;
+    let countries = [
+        "argentina",
+        "brasil",
+        "chile",
+        "colombia",
+        "paraguai",
+        "peru",
+        "suriname",
+        "uruguay",
+    ];
 
-                if (saveCounter === resultData.length) {
-                    mongoose
-                        .disconnect()
-                        .then(() =>
-                            console.log(
-                                "saved succesfully and mongodb disconnected"
-                            )
-                        )
-                        .catch((error) => console.log(error));
+    let universityList = [];
+    const asyncRes = await Promise.all(
+        countries.map(async (country) => {
+            try {
+                const response = await fetch(url + country);
+                const json = await response.json();
+                resultData = [...json];
+                for (let i = 0; i < resultData.length; i++) {
+                    let university = new University({
+                        alpha_two_code: resultData[i].alpha_two_code,
+                        web_pages: resultData[i].web_pages,
+                        name: resultData[i].name,
+                        country: resultData[i].country,
+                        domains: resultData[i].domains,
+                        state_province: resultData[i]["state-province"],
+                    });
+                    universityList.push(university);
                 }
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-});
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    );
+    University.insertMany(universityList, (err, list) => {
+        mongoose.disconnect(() => {
+            try {
+                console.log({ message: "disconnected from DB" });
+            } catch (err) {
+                console.log({ message: err.message });
+            }
+        });
+    });
+}

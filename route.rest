@@ -1,30 +1,44 @@
+
+// GET todos
 GET http://localhost:3000/universities
 
 ###
-
-GET http://localhost:3000/universities/622a73770389b59ed3f9459a
+// GET por ID
+GET http://localhost:3000/universities/622e67e5293265e8b93e8a01
 
 ###
 
+// GET por pais
+GET http://localhost:3000/universities?country=argentina
+
+
+###
+// GET por pais e com paginacao
+GET http://localhost:3000/universities?country=argentina&pageSize=2&pageIndex=2
+
+###
+
+// Post uni
 POST http://localhost:3000/universities
 Content-Type: application/json
 
 {
     "alpha_two_code": "BR",
         "web_pages": "www.pucrio.br",
-        "name": "PUC-RIO",
-        "country": "Brasil",
+        "name": "Universidad Academia de Humanismo Cristiano",
+        "country": "Chile",
         "domains": "puc.br",
-        "state_province": "RJ"
+        "state_province": null
 }
 
 ###
 
-
-DELETE http://localhost:3000/universities/622a740bf6865bb719a4d5a5
+// Delete uni
+DELETE http://localhost:3000/universities/622ceb45a3ca81b4422419f3
 
 ###
 
+// Update uni
 PATCH  http://localhost:3000/universities/622a740bf6865bb719a4d5a5
 Content-Type: application/json
 
