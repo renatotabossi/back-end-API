@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "devStart": "nodemon server.js",
-    "seeds": "node seeds.js"
+    "seeds": "node seeds.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,8 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.0",
-    "nodemon": "^2.0.15"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }

@@ -7,7 +7,7 @@ const University = require("./models/university");
 mongoose
     .connect("mongodb://localhost:27017/universities")
     .then(async () => {
-        console.log("Connection open on seed2.js");
+        console.log("Connection open on seed.js");
         await populateDB();
     })
     .catch((err) => {
