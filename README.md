@@ -40,8 +40,8 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 --- 
  ## Install 
  
-   $ git clone https://github.com/renatotabossi/back-end-API-integraDO
-   $ cd PROJECT_TITLE 
+   $ git clone https://github.com/renatotabossi/back-end-API-
+   $ cd back-end-API-
    $ npm install 
 
 ## App using MongoDB on LOCALHOST
@@ -49,10 +49,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 ## Running the project 
  
  $ npm run devStart 
- 
-## Running the Test
 
-$ npm run test
 
 ## Seeding the DB
 
