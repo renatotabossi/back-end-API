@@ -1,6 +1,6 @@
 # Universities API and REst application 
  
-Project made for  an interview.
+Project made for an interview.
  
 --- 
 ## Requirements 
@@ -50,6 +50,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
  
  $ npm run devStart 
 
+ 
 
 ## Seeding the DB
 

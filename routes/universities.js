@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
+
+// Model
 const University = require("../models/university");
 
+// Get all universities
 router.get("/", async (req, res) => {
     const { country } = req.query;
     let { pageSize, pageIndex } = req.query;
@@ -33,7 +36,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Get uma uni usando ID
+// Get one university using ID
 router.get("/:id", getUniversity, (req, res) => {
     res.send({
         ID: res.university.id,
@@ -46,7 +49,7 @@ router.get("/:id", getUniversity, (req, res) => {
     });
 });
 
-// Post uma uni
+// Post one university
 router.post("/", async (req, res) => {
     const university = new University({
         alpha_two_code: req.body.alpha_two_code,
@@ -76,7 +79,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-// Update uma uni
+// Update univeristy using ID
 router.patch("/:id", getUniversity, async (req, res) => {
     if (req.body.web_pages != null) {
         res.university.web_pages = req.body.web_pages;
@@ -95,7 +98,7 @@ router.patch("/:id", getUniversity, async (req, res) => {
     }
 });
 
-// Delete uma uni
+// Delete university using ID
 router.delete("/:id", getUniversity, async (req, res) => {
     try {
         await res.university.remove();
@@ -105,6 +108,7 @@ router.delete("/:id", getUniversity, async (req, res) => {
     }
 });
 
+// Middleware function
 async function getUniversity(req, res, next) {
     let university;
     try {

@@ -4,6 +4,7 @@ const { json } = require("express/lib/response");
 const mongoose = require("mongoose");
 const University = require("./models/university");
 
+// MongoDB connection
 mongoose
     .connect("mongodb://localhost:27017/universities")
     .then(async () => {
@@ -14,6 +15,7 @@ mongoose
         console.log({ message: err.message });
     });
 
+// Populate function
 async function populateDB() {
     const url = "http://universities.hipolabs.com/search?country=";
 
