@@ -50,8 +50,10 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
  
  $ npm run devStart 
 
- 
-
 ## Seeding the DB
 
 $ npm run seeds
+
+## Testing with JEST
+
+$ npm run test
