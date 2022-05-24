@@ -1,6 +1,9 @@
 # Universities API and REst application 
  
-Project made for an interview.
+Project using an open API. 
+It is possible to populate the localhost database using the "npm run seeds" command. 
+Create, read (all or one by id), patch and delete are implemented and fully working.
+Testing done using Jest (npm run test) and Route.rest (testing like postman).
  
 --- 
 ## Requirements 
