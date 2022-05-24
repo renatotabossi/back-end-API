@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const University = require("./models/university");
 
 // Mongo connection with Try/Catch
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect("mongodb://localhost/universities");
 const db = mongoose.connection;
 db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("connected to database!"));
