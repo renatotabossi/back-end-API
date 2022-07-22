@@ -2,18 +2,15 @@
 
 - Importar de API para MongoDB
 - Ator Principal: Integracao.
-- pre requisito: Acesso aos endpoint da API.
-- resultado final: Informacoes salvas no MongoDB, logica CRUD criada e testada (Jest)
+- pre requisito: Acesso aos endpoint da API e a listagem dos paises.
+- resultado final: Informacoes salvas no MongoDB
 
 Cenario principal:
  - Testar endpoint da API usando Postman.
- - Desenvolver arquivo de criacao de servidor e rotas no Node, testar portas e logica.
- - Desenvolver arquivo que percorre as API (usando MAP e promise.all) e coleta as informacoes necessarias.
-     - Desenvolver Model para salvar as informacoes de maneira uniforme no DB  
-     - Desenvolver o Save das informacoes para o MongoDB.
-     - Testar o save no MongoDB.
- - Desenvolver a logica CRUD para que as informacoes salvas no DB possam ser criadas, alteradas, lidas ou deletadas.
- - Testar o CRUD de maneira minuciosa.
+ - Desenvolver arquivo que percorre as API dos paises (usando MAP e promise.all) e coleta as informacoes necessarias.
+ - Desenvolver Model para salvar as informacoes de maneira uniforme no DB  
+ - Desenvolver o Save das informacoes para o MongoDB.
+ - Testar o save no MongoDB.
  
  Fluxos alternativos:
  - endpoint nao funciona no postman.
@@ -29,10 +26,6 @@ Cenario principal:
      - Checar se a porta do Mongo esta correta.
      - Checar se o Db esta ligado (localhost).
      - Checar se a logica de save esta sendo feita de maneira correta.
-
- - Alguma rota do CRUD nao funciona.
-     - Checar a logica feita.
-     - Checar se as rotas estao sendo propriamente passadas na logica e no teste.
 
 
 # Universities API and REst application 
