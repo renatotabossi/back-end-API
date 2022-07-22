@@ -1,3 +1,40 @@
+# USE CASE
+
+- Importar de API para MongoDB
+- Ator Principal: Integracao.
+- pre requisito: Acesso aos endpoint da API.
+- resultado final: Informacoes salvas no MongoDB, logica CRUD criada e testada (Jest)
+
+Cenario principal:
+ - Testar endpoint da API usando Postman.
+ - Desenvolver arquivo de criacao de servidor e rotas no Node, testar portas e logica.
+ - Desenvolver arquivo que percorre as API (usando MAP e promise.all) e coleta as informacoes necessarias.
+     - Desenvolver Model para salvar as informacoes de maneira uniforme no DB  
+     - Desenvolver o Save das informacoes para o MongoDB.
+     - Testar o save no MongoDB.
+ - Desenvolver a logica CRUD para que as informacoes salvas no DB possam ser criadas, alteradas, lidas ou deletadas.
+ - Testar o CRUD de maneira minuciosa.
+ 
+ Fluxos alternativos:
+ - endpoint nao funciona no postman.
+     - Checar se estao sendo escritos de maneira correta.
+      - Se estiverem, checar os endpoints com quem os forneceu, testar variacoes logicas do endpoint (v1 inves de v2, /json, etc).
+      
+ - Logica que percorre a API nao esta funcionando (infos incorretas ou faltando).
+     - Checar se os endpoints estao sendo propriamente escritos nas variaves.
+     - Checar se o Model esta recebendo as informacoes corretos e se os campos tem os tipos e as variaveis corretas.
+     - Checar se o pedido esta sendo feito de maneira async ou usando o .then de maneira correta.
+     
+ - Infos nao estao sendo salvas no DB.
+     - Checar se a porta do Mongo esta correta.
+     - Checar se o Db esta ligado (localhost).
+     - Checar se a logica de save esta sendo feita de maneira correta.
+
+ - Alguma rota do CRUD nao funciona.
+     - Checar a logica feita.
+     - Checar se as rotas estao sendo propriamente passadas na logica e no teste.
+
+
 # Universities API and REst application 
  
 Project using an open API. 
@@ -43,8 +80,8 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 --- 
  ## Install 
  
-   $ git clone https://github.com/renatotabossi/back-end-API-
-   $ cd back-end-API-
+   $ git clone https://github.com/renatotabossi/back-end-API
+   $ cd back-end-API
    $ npm install 
 
 ## App using MongoDB on LOCALHOST
