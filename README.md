@@ -7,25 +7,35 @@
 
 Cenario principal:
  - Testar endpoint da API usando Postman.
- - Desenvolver arquivo que percorre as API dos paises (usando MAP e promise.all) e coleta as informacoes necessarias.
- - Desenvolver Model para salvar as informacoes de maneira uniforme no DB  
+ - Desenvolver arquivo que percorre as API dos paises e coleta as informacoes necessarias.
+   - Usar MAP para percorrer diversos endpoints de maneira sequencial.
+   - Usar promise.all para devolver as promecas e salvar os item de uma so vez no DB.
+ - Desenvolver Model para salvar as informacoes de maneira uniforme no DB.
+   - Desenvolver schema de mongo para parsear as informacoes para o banco.
  - Desenvolver o Save das informacoes para o MongoDB.
  - Testar o save no MongoDB.
  
  Fluxos alternativos:
- - endpoint nao funciona no postman.
+ 1 - endpoint nao funciona no postman.
      - Checar se estao sendo escritos de maneira correta.
-      - Se estiverem, checar os endpoints com quem os forneceu, testar variacoes logicas do endpoint (v1 inves de v2, /json, etc).
+      - testar variacoes logicas do endpoint (v1 inves de v2, /json, etc).
+      - Checar os endpoints com quem os forneceu
       
- - Logica que percorre a API nao esta funcionando (infos incorretas ou faltando).
+ 2 - Logica que percorre a API nao esta funcionando (infos incorretas ou faltando).
      - Checar se os endpoints estao sendo propriamente escritos nas variaves.
      - Checar se o Model esta recebendo as informacoes corretos e se os campos tem os tipos e as variaveis corretas.
      - Checar se o pedido esta sendo feito de maneira async ou usando o .then de maneira correta.
+     - Caso um ou mais endpoints deem problema, passar para o proximo endpoint e continuar a varredura e tentar salvar o que retornou corretamente (devolver erro para os endpoints que deram problema).
+     - Caso todos os endpoints deem problema voltar para o caso 1 e testar as solucoes dele.
      
- - Infos nao estao sendo salvas no DB.
+ 3 - Infos nao estao sendo salvas no DB.
      - Checar se a porta do Mongo esta correta.
      - Checar se o Db esta ligado (localhost).
      - Checar se a logica de save esta sendo feita de maneira correta.
+     - Caso apenas algumas informacoes estiverem sendo salvas.
+       - Voltar ao passo 2 para checar se as informacoes estao vindo corretamente dos endpoints.
+       - Caso estejam vindo corretamente, checar se o parser esta funcionando.
+     - Caso nenhuma informacao esteja sendo salva, checas os primeiros passos, caso contrario checar conexao.
 
 
 # Universities API and REst application 
